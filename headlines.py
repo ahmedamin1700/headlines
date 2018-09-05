@@ -11,9 +11,9 @@ RSS_FEEDS = {
 }
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def get_news():
-    query = request.args.get('publication')
+    query = request.form.get('publication')
     if not query or not query.lower() in RSS_FEEDS:
         publication = 'bbc'
     else:
